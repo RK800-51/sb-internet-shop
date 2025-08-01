@@ -1,0 +1,7 @@
+package com.ishop.sbinternetshop.repositories;
+
+import com.ishop.sbinternetshop.model.Category;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface CategoryRepository extends JpaRepository<Category, Long> {
+}
