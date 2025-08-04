@@ -2,6 +2,7 @@ package com.ishop.sbinternetshop.controller;
 
 import com.ishop.sbinternetshop.model.Category;
 import com.ishop.sbinternetshop.service.CategoryService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class CategoryController {
     }
 
     @RequestMapping(value = "/public/categories", method = RequestMethod.POST)
-    public ResponseEntity<String> createCategory(@RequestBody Category category){
+    public ResponseEntity<String> createCategory(@Valid @RequestBody Category category){
         try {
             categoryService.createCategory(category);
             return new ResponseEntity<>("Category added successfully", HttpStatus.CREATED);
