@@ -1,14 +1,13 @@
 package com.ishop.sbinternetshop.service;
 
-import com.ishop.sbinternetshop.model.Category;
-
-import java.util.List;
+import com.ishop.sbinternetshop.payload.CategoryDTO;
+import com.ishop.sbinternetshop.payload.CategoryResponse;
 
 public interface CategoryService {
-    List<Category> getAllCategories();
-    void createCategory(Category category);
+    CategoryResponse getAllCategories();
+    CategoryDTO createCategory(CategoryDTO categoryDTO);
 
-    String deleteCategory(Long categoryId);
+    CategoryDTO deleteCategory(Long categoryId);
 
-    Category updateCategory(Category category, Long categoryId);
+    CategoryDTO updateCategory(CategoryDTO category, Long categoryId);
 }
