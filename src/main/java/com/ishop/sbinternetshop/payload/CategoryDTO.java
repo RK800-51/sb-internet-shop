@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CategoryDTO {
+    // DTO class for Category entity
     private Long categoryId;
     private String categoryName;
 

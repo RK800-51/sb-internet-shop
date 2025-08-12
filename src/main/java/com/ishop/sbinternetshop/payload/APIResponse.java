@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class APIResponse {
+    // standard exception response class for project API
     public String message;
     private boolean status;
 }

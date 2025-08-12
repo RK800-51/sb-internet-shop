@@ -19,6 +19,7 @@ import java.util.List;
 
 @Service
 public class CategoryServiceImpl implements CategoryService{
+    // service class (business logic) for Category entity
 
     private CategoryRepository categoryRepository;
     private ModelMapper modelMapper;

@@ -1,6 +1,7 @@
 package com.ishop.sbinternetshop.exceptions;
 
 public class ResourceNotFoundException extends RuntimeException {
+    // custom exception for cases when server does not 
     String resourceName;
     String field;
     String fieldName;

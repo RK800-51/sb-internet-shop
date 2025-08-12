@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/api")
 public class CategoryController {
+    // controller layer class for Category entity
 
     private CategoryService categoryService;
 

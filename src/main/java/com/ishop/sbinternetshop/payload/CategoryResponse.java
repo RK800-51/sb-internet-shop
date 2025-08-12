@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class CategoryResponse {
+    // standard response API class for pagination
     private List<CategoryDTO> content;
     private Integer pageNumber;
     private Integer pageSize;
