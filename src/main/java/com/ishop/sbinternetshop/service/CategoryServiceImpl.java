@@ -21,8 +21,8 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService{
     // service class (business logic) for Category entity
 
-    private CategoryRepository categoryRepository;
-    private ModelMapper modelMapper;
+    private final CategoryRepository categoryRepository;
+    private final ModelMapper modelMapper;
 
     @Autowired
     public CategoryServiceImpl(CategoryRepository categoryRepository,  ModelMapper modelMapper) {

@@ -18,7 +18,7 @@ import lombok.*;
 public class Category {
     // Category entity class
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @EqualsAndHashCode.Include
     @ToString.Include
     private Long categoryId;

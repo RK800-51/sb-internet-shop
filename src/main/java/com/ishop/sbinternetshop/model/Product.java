@@ -18,9 +18,11 @@ public class Product {
     private Long productId;
     @ToString.Include
     private String productName;
+    private String image;
     private String description;
     private Integer quantity;
     private double price;
+    private double discount;
     private double specialPrice;
 
     @ManyToOne
