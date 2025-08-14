@@ -1,7 +1,6 @@
 package com.ishop.sbinternetshop.service;
 
 
-import com.ishop.sbinternetshop.model.Product;
 import com.ishop.sbinternetshop.payload.ProductDTO;
 import com.ishop.sbinternetshop.payload.ProductResponse;
 import org.springframework.web.multipart.MultipartFile;
@@ -10,10 +9,10 @@ import java.io.IOException;
 
 public interface ProductService {
     ProductDTO addProduct(Long categoryId, ProductDTO productDto);
-    ProductResponse getAllProducts();
-    ProductResponse getAllProductsByCategory(Long categoryId);
+    ProductResponse getAllProducts(Integer pageNumber, Integer pageSize, String sortBy, String sortOrder);
+    ProductResponse getAllProductsByCategory(Long categoryId, Integer pageNumber, Integer pageSize, String sortBy, String sortOrder);
 
-    ProductResponse getProductsByKeyword(String keyword);
+    ProductResponse getProductsByKeyword(String s, Integer pageNumber, Integer pageSize, String sortBy, String keyword);
 
     ProductDTO updateProduct(Long productId, ProductDTO productDto);
 
