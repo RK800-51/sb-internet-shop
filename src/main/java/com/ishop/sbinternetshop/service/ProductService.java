@@ -6,9 +6,13 @@ import com.ishop.sbinternetshop.payload.ProductDTO;
 import com.ishop.sbinternetshop.payload.ProductResponse;
 
 public interface ProductService {
-    ProductDTO addProduct(Long categoryId, Product product);
+    ProductDTO addProduct(Long categoryId, ProductDTO productDto);
     ProductResponse getAllProducts();
     ProductResponse getAllProductsByCategory(Long categoryId);
 
     ProductResponse getProductsByKeyword(String keyword);
+
+    ProductDTO updateProduct(Long productId, ProductDTO productDto);
+
+    ProductDTO deleteProduct(Long productId);
 }

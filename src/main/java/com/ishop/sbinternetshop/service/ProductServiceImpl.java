@@ -28,9 +28,10 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductDTO addProduct(Long categoryId, Product product) {
+    public ProductDTO addProduct(Long categoryId, ProductDTO productDto) {
         Category category = categoryRepository.findById(categoryId).orElseThrow(
                 () -> new ResourceNotFoundException("Category", "categoryId", categoryId));
+        Product product = modelMapper.map(productDto, Product.class);
         double specialPrice = product.getPrice() - (product.getDiscount() * 0.01) * product.getPrice();
 
         product.setCategory(category);
@@ -50,6 +51,28 @@ public class ProductServiceImpl implements ProductService {
 
         return productResponse;
     }
+
+    @Override
+    public ProductDTO updateProduct(Long productId, ProductDTO productDto) {
+        // get the existing product from DB
+        Product productFromDB = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product", "productId", productId));
+        Product product = modelMapper.map(productDto, Product.class);
+        // update the product info with the one in request body
+        productFromDB.setProductName(product.getProductName());
+        productFromDB.setDescription(product.getDescription());
+        productFromDB.setQuantity(product.getQuantity());
+        productFromDB.setPrice(product.getPrice());
+        productFromDB.setDiscount(product.getDiscount());
+        double specialPrice = product.getPrice() - (product.getDiscount() * 0.01) * product.getPrice();
+        productFromDB.setSpecialPrice(specialPrice);
+
+        // save to DB
+        Product savedProduct = productRepository.save(productFromDB);
+
+        return modelMapper.map(savedProduct, ProductDTO.class);
+    }
+
 
     @Override
     public ProductResponse getAllProductsByCategory(Long categoryId) {
@@ -73,5 +96,11 @@ public class ProductServiceImpl implements ProductService {
         return productResponse;
     }
 
-
+    @Override
+    public ProductDTO deleteProduct(Long productId) {
+        Product productToDelete = productRepository.findById(productId)
+                .orElseThrow(() -> new ResourceNotFoundException("Product", "productId", productId));
+        productRepository.delete(productToDelete);
+        return modelMapper.map(productToDelete, ProductDTO.class);
+    }
 }
