@@ -11,17 +11,17 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@ToString(onlyExplicitlyIncluded = true)
+@ToString
+@Table(name = "products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
-    @ToString.Include
     private Long productId;
-    @ToString.Include
     @NotBlank
     @Size(min = 3, message = "Product name must contain at least 3 characters")
     private String productName;
+    @ToString.Exclude
     private String image;
     @NotBlank
     @Size(min = 6, message = "Product description must contain at least 6 characters")
@@ -33,5 +33,11 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @ToString.Exclude
     private Category category;
+
+    @ManyToOne
+    @JoinColumn(name = "seller_id")
+    @ToString.Exclude
+    private User user;
 }
