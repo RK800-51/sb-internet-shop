@@ -14,7 +14,7 @@ import lombok.*;
 @ToString(onlyExplicitlyIncluded = true)
 public class Product {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     @ToString.Include
     private Long productId;

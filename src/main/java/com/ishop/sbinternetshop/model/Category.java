@@ -17,7 +17,7 @@ import java.util.List;
 public class Category {
     // Category entity class
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
     @ToString.Include
     private Long categoryId;

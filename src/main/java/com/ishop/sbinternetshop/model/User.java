@@ -1,0 +1,52 @@
+package com.ishop.sbinternetshop.model;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+import lombok.*;
+
+import java.util.HashSet;
+import java.util.Set;
+
+@Entity
+@Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = "username"),
+                                            @UniqueConstraint(columnNames = "email")})
+@NoArgsConstructor
+@AllArgsConstructor
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@ToString(onlyExplicitlyIncluded = true)
+public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @EqualsAndHashCode.Include
+    @ToString.Include
+    @Column(name = "user_id")
+    private Long userId;
+
+    @ToString.Include
+    @NotBlank
+    @Size(max = 20)
+    @Column(name = "username")
+    private String username;
+    @ToString.Include
+    @NotBlank
+    @Size(max = 50)
+    @Email
+    @Column(name = "email")
+    private String email;
+    @NotBlank
+    @Size(max = 120)
+    @Column(name = "password")
+    private String password;
+
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @JoinTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles = new HashSet<>();
+}
