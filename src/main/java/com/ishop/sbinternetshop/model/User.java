@@ -18,6 +18,8 @@ import java.util.Set;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @ToString(onlyExplicitlyIncluded = true)
+@Getter
+@Setter
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,7 +32,7 @@ public class User {
     @NotBlank
     @Size(max = 20)
     @Column(name = "username")
-    private String username;
+    private String userName;
     @ToString.Include
     @NotBlank
     @Size(max = 50)
@@ -42,8 +44,8 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    public User(String username, String email, String password) {
-        this.username = username;
+    public User(String userName, String email, String password) {
+        this.userName = userName;
         this.email = email;
         this.password = password;
     }
