@@ -1,6 +1,10 @@
 package com.ishop.sbinternetshop.payload;
 
+import com.ishop.sbinternetshop.model.Product;
 import lombok.*;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -8,16 +12,11 @@ import lombok.*;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductDTO {
+public class CartDTO {
     @EqualsAndHashCode.Include
     @ToString.Include
-    private Long productId;
+    private Long cartId;
     @ToString.Include
-    private String productName;
-    private String image;
-    private String description;
-    private Integer quantity;
-    private double price;
-    private double discount;
-    private double specialPrice;
+    private Double totalPrice = 0.0;
+    private List<ProductDTO> products = new ArrayList<>();
 }

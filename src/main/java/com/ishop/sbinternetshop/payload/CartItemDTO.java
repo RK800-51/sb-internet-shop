@@ -8,16 +8,14 @@ import lombok.*;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProductDTO {
+public class CartItemDTO {
     @EqualsAndHashCode.Include
     @ToString.Include
-    private Long productId;
-    @ToString.Include
-    private String productName;
-    private String image;
-    private String description;
+    private Long cartItemId;
+    private CartDTO cart;
+    private ProductDTO product;
     private Integer quantity;
-    private double price;
-    private double discount;
-    private double specialPrice;
+    private Double discount;
+    private Double productPrice;
+
 }
