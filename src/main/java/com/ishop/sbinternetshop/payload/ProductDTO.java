@@ -16,7 +16,7 @@ public class ProductDTO {
     private String productName;
     private String image;
     private String description;
-    private Integer quantity;
+    private Integer quantity; // quantity of product added to the cart, not in stock
     private double price;
     private double discount;
     private double specialPrice;
